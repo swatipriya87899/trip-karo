@@ -1,0 +1,11 @@
+.adventure_container{
+    padding:  5vh 8vw;
+}
+.adventure_container>h1, .adventure_container>h3{
+    font-weight: 500;
+}
+
+.adventure_filter{
+    display: flex;
+    gap: 2rem;
+}

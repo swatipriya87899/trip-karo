@@ -1,5 +1,6 @@
 import React from 'react';
 import './Adventure.css'
+import AdventureCard from '../../Components/AdventureCard/AdventureCard';
 
 const Adventure = () => {
   return (
@@ -9,6 +10,7 @@ const Adventure = () => {
       <hr></hr>
       <div className='adventure_filter'> 
         <div>Filters:</div>
+    
         <div>
         <select>
             <option disabled>Filter by duration</option>
@@ -33,6 +35,8 @@ const Adventure = () => {
           <span>Clear</span>
         </div>
       </div>
+
+      <AdventureCard/>
     </div>
   )
 }

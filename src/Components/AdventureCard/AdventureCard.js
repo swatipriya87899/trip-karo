@@ -1,24 +1,25 @@
 import React from 'react';
 import './AdventureCard.css'
 
-const AdventureCard = () => {
+const AdventureCard = (props) => {
+
   return (
     <div className='adventure_card_container'>
 
-      <img src='https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg'></img>
+      <img src={props.image}></img>
       <div className='adventure_card_text'>
         <div className='adventure_name_price'>
-            <div>Fort Shilbluff</div>
-            <div><b>$ 90</b></div>
+            <div>{props.name}</div>
+            <div><b>₹ {props.costPerHead}</b></div>
         </div>
         <div className='adventure_duration'>
             <div>Duration</div>
-            <div><b>19 Hours</b></div>
+            <div><b>{props.duration} Hours</b></div>
         </div>
       </div>
 
       <div className='adventure_tag'>
-        <span>HillSide</span>
+        <span>{props.category}</span>
       </div>
     </div>
   )

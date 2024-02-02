@@ -9,7 +9,7 @@ const CardGroup = (props) => {
   return (
     <div className="card_group_container">
       {props.data.map((data) => (
-        <Link to="/adventure">
+        <Link to={`/adventure/${data.id}`}>
           <Card
             city={data.city}
             description={data.description}

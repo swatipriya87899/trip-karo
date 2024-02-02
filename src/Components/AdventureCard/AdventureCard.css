@@ -32,3 +32,20 @@
     right: -1rem;
     font-weight: bold;
 }
+
+.adventure_card_container:hover {
+    animation: zoom-out 1.5s forwards;
+    filter: brightness(70%);
+}
+
+@keyframes zoom-out{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0.85);
+    }
+    100%{
+        transform: scale(1);
+    }
+}

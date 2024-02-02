@@ -1,6 +1,7 @@
 import React from 'react';
 import './Adventure.css'
 import AdventureCard from '../../Components/AdventureCard/AdventureCard';
+import AdventureCardGroup from '../../Components/AdventureCardGroup/AdventureCardGroup';
 
 const Adventure = () => {
   return (
@@ -36,7 +37,7 @@ const Adventure = () => {
         </div>
       </div>
 
-      <AdventureCard/>
+      <AdventureCardGroup/>
     </div>
   )
 }

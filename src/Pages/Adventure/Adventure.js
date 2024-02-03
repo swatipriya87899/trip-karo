@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Adventure.css'
 import AdventureCard from '../../Components/AdventureCard/AdventureCard';
 import AdventureCardGroup from '../../Components/AdventureCardGroup/AdventureCardGroup';
 
 const Adventure = () => {
+
+  const [filterByDuration, setFilterByDuration] = useState('');
+
+  const handleFilterChange = (e) => {
+    setFilterByDuration(e.target.value)
+  }
+  console.log(filterByDuration);
+
   return (
     <div className='adventure_container'>
       <h1>Explore all adventures</h1>
@@ -13,7 +21,7 @@ const Adventure = () => {
         <div>Filters:</div>
     
         <div>
-        <select>
+        <select onChange={handleFilterChange}>
             <option disabled>Filter by duration</option>
             <option value="0-2hours">0-2 Hours</option>
             <option value="2-6hours">2-6 Hours</option>
@@ -37,7 +45,7 @@ const Adventure = () => {
         </div>
       </div>
 
-      <AdventureCardGroup/>
+      <AdventureCardGroup filterByDuration={filterByDuration}/>
     </div>
   )
 }

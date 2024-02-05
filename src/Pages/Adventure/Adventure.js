@@ -7,8 +7,15 @@ const Adventure = () => {
 
   const [filterByDuration, setFilterByDuration] = useState('');
 
+  const [clearFilterByDuration, setClearFilterByDuration] = useState(false);
+
+
   const handleFilterChange = (e) => {
     setFilterByDuration(e.target.value)
+  }
+
+  const handleClearFilter = (e) => {
+    setClearFilterByDuration(true);
   }
   console.log(filterByDuration);
 
@@ -29,7 +36,7 @@ const Adventure = () => {
             <option value="12+hours">12+ Hours</option>
           </select>
 
-          <span>Clear</span>
+          <span onClick={handleClearFilter}>Clear</span>
         </div>
 
         <div>
@@ -45,7 +52,7 @@ const Adventure = () => {
         </div>
       </div>
 
-      <AdventureCardGroup filterByDuration={filterByDuration}/>
+      <AdventureCardGroup filterByDuration={filterByDuration} clearFilterByDuration={clearFilterByDuration}/>
     </div>
   )
 }

@@ -6,13 +6,16 @@ import { useParams } from 'react-router-dom';
 const AdventureCardGroup = (props) => {
 
     const [adventureData, setAdventureData] = useState([]);
+    const [originalAdventureData, setOriginalAdventureData] = useState([]);
+
 
     let {city} = useParams()
 
     const fetchData = async() => {
         let response=await fetch(`https://makemytrip-backend-w2d2.onrender.com/adventures?city=${city}`);
         response=await response.json();
-        setAdventureData(response)
+        setAdventureData(response);
+        setOriginalAdventureData(response)
     }
 
     useEffect(()=>{
@@ -23,29 +26,33 @@ const AdventureCardGroup = (props) => {
         handleFilterByDuration()
     },[props.filterByDuration])
 
+    useEffect(()=>{
+        setAdventureData(originalAdventureData)
+    },[props.clearFilterByDuration])
+
     const handleFilterByDuration = () => {
         var filterData;
         switch(props.filterByDuration){
             case '0-2hours':
-                filterData=adventureData.filter((activity) => activity.duration >=0 && activity.duration<=2);
+                filterData=originalAdventureData.filter((activity) => activity.duration >=0 && activity.duration<=2);
                 setAdventureData(filterData)
                 console.log("fitler",filterData);
                 break;
 
             case '2-6hours':
-                filterData=adventureData.filter(activity => activity.duration >2 && activity.duration<=6);
+                filterData=originalAdventureData.filter(activity => activity.duration >2 && activity.duration<=6);
                 setAdventureData(filterData)
                 console.log("fitler",filterData);
                 break;
 
             case '6-12hours':
-            filterData=adventureData.filter(activity => activity.duration >6 && activity.duration<=12);
+            filterData=originalAdventureData.filter(activity => activity.duration >6 && activity.duration<=12);
             setAdventureData(filterData)
             console.log("fitler",filterData);
             break;
 
             case '12+hours':
-            filterData=adventureData.filter(activity => activity.duration >12);
+            filterData=originalAdventureData.filter(activity => activity.duration >12);
             setAdventureData(filterData)
             console.log("fitler",filterData);
             break;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AdventureCard from '../AdventureCard/AdventureCard';
 import './AdventureCardGroup.css';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const AdventureCardGroup = (props) => {
 
@@ -63,9 +64,12 @@ const AdventureCardGroup = (props) => {
     }
   return (
     <div className='adventure_card_group_container'>
-        {console.log(adventureData)}
         {
-            adventureData.map((data)=> <div key={data.id}><AdventureCard {...data}/></div>)
+            adventureData.map((data)=> 
+            (<Link to={`/adventure/details/${data.id}`} key={data.id}>
+                <div><AdventureCard {...data}/></div>
+            </Link>)
+            )
         }
     </div>
   )

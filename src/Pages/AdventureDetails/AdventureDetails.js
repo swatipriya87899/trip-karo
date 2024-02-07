@@ -1,16 +1,33 @@
-import React from 'react';
-import './AdventureDetails.css'
+import React, { useEffect, useState } from 'react';
+import './AdventureDetails.css';
+import { useParams } from 'react-router-dom';
 
 const AdventureDetails = () => {
+
+  const {id} = useParams();
+  const [adventureData, setAdventureData] = useState();
+
+  const fetchData =async() =>  {
+    let response =await fetch(`https://makemytrip-backend-w2d2.onrender.com/adventures/detail?adventure=${id}`);
+    response=await response.json();
+    setAdventureData(response)
+  }
+  useEffect(()=>{
+    fetchData();
+  },[])
+
+  {console.log(adventureData)}
   return (
+
     <div className='adventure-details-container'>
       <div className='adventure-details-flex-1'>
-        <h1>North Gelgoon</h1>
-        <h3>This is a mind-blowing adventure!</h3>
-        <img src='https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg' alt='adventure-image'/>
+        <h1>{adventureData?.name}</h1>
+        <h3>{adventureData?.subtitle}</h3>
+        <img src={adventureData?.images[0]} alt='adventure-image'/>
         <div>
+          <hr></hr>
         <h3>About the Experience</h3>
-A random paragraph can also be an excellent way for a writer to tackle writers' block. Writing block can often happen due to being stuck with a current project that the writer is trying to complete. By inserting a completely random paragraph from which to begin, it can take down some of the issues that may have been causing the writers' block in the first place. A random paragraph can also be an excellent way for a writer to tackle writers' block. Writing block can often happen due to being stuck with a current project that the writer is trying to complete. By inserting a completely random paragraph from which to begin, it can take down some of the issues that may have been causing the writers' block in the first place. A random paragraph can also be an excellent way for a writer to tackle writers' block. Writing block can often happen due to being stuck with a current project that the writer is trying to complete. By inserting a completely random paragraph from which to begin, it can take down some of the issues that may have been causing the writers' block in the first place. A random paragraph can also be an excellent way for a writer to tackle writers' block. Writing block can often happen due to being stuck with a current project that the writer is trying to complete. By inserting a completely random paragraph from which to begin, it can take down some of the issues that may have been causing the writers' block in the first place. A random paragraph can also be an excellent way for a writer to tackle writers' block. Writing block can often happen due to being stuck with a current project that the writer is trying to complete. By inserting a completely random paragraph from which to begin, it can take down some of the issues that may have been causing the writers' block in the first place. A random paragraph can also be an excellent way for a writer to tackle writers' block. Writing block can often happen due to being stuck with a current project that the writer is trying to complete. By inserting a completely random paragraph from which to begin, it can take down some of the issues that may have been causing the writers' block in the first place.
+        <p>{adventureData?.content}</p>
         </div>
       </div>
       <div className='adventure-details-flex-2'>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css'
 import Home from './Pages/Home/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Adventure from './Pages/Adventure/Adventure';
@@ -11,12 +12,14 @@ const App = () => {
     <div>
       <Router>
         <Header/>
+        <div style={{minHeight :'84vh'}}>
         <Switch>
           <Route path="/" exact component={Home}></Route>
           <Route path="/adventure/:city" exact component={Adventure}></Route>
-          <Route path="/adventure/details/:id" component={AdventureDetails}></Route>
+          <Route path="/adventure/details/:id" exact component={AdventureDetails}></Route>
 
         </Switch>
+        </div>
         <Footer/>
       </Router>
     </div>

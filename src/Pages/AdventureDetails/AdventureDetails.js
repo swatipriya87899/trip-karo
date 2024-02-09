@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './AdventureDetails.css';
 import { useParams } from 'react-router-dom';
+import Form from '../../Components/Form/Form';
 
 const AdventureDetails = () => {
 
@@ -31,7 +32,7 @@ const AdventureDetails = () => {
         </div>
       </div>
       <div className='adventure-details-flex-2'>
-        <h1>Sold Out</h1>
+        {adventureData?.available ? <Form adventureId={adventureData?.id}/> : <h2>sold out</h2>}
       </div>
     </div>
   )
